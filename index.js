@@ -28,7 +28,6 @@ function showPosition(position)
         var res_data=JSON.parse(this.responseText);
         console.log(typeof res_data);
         console.log(res_data);
-        var flag=res_data.location_suggestions[0].country_flag_url;
         var city_name=res_data.location_suggestions[0].name;
         index_location.value=city_name;
       }
@@ -38,6 +37,8 @@ function showPosition(position)
 var city1_name=document.getElementById('index_location')
   var rest_name=document.getElementById('res_name')
   var btn=document.getElementById('btn')
+//  btn.addEventListener('click',fun)
+
   var city_id
 function fun()
 {
@@ -58,12 +59,11 @@ function fun2(){
     behavior:"smooth",
   })
 }
-
 function getrest()
 {
   var resUrl='https://developers.zomato.com/api/v2.1/search?entity_id='+city_id+'&entity_type=city&q='+rest_name.value+'&count=10&apikey=13308433d97b2d85d003fb417b3932ef';
   $.get(resUrl,function(resp){
-    console.log(resp);
+     console.log(resp);
     $('#restaurants').html("");
         for(var i=0;i<resp.restaurants.length;i++)
         {
